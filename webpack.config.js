@@ -11,6 +11,10 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: __dirname + '/dist',
+        libraryExport: 'default',
+        library: 'vue-preloaders',
+        libraryTarget: 'umd',
+        umdNamedDefine: true
     },
 
     resolve: {
