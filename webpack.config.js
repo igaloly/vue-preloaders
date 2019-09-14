@@ -14,7 +14,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.js', '.vue']
+        extensions: ['*', '.js', '.vue']
     },
 
     module: {
@@ -41,7 +41,6 @@ module.exports = {
     },
 
     plugins: [
-        // make sure to include the plugin for the magic
         new VueLoaderPlugin()
     ]
 };
