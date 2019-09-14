@@ -1,0 +1,33 @@
+{
+  "name": "vue-preloaders",
+  "version": "1.0.0",
+  "description": "Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library",
+  "main": "dist/vue-plugin.js",
+  "scripts": {
+    "build": "del .\\dist && webpack --config ./webpack.config.js"
+  },
+  "keywords": [
+    "vue",
+    "nuxt",
+    "loader",
+    "preloader",
+    "spinner"
+  ],
+  "author": "Igal Leikin <igaloly@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10",
+    "lodash.merge": "^4.6.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.1.0",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8"
+  }
+}
