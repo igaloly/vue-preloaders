@@ -1,6 +1,6 @@
 {
   "name": "vue-preloaders",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library",
   "main": "dist/vue-plugin.js",
   "scripts": {
@@ -15,6 +15,11 @@
   ],
   "author": "Igal Leikin <igaloly@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igaloly/vue-preloaders"
+  },
+  "homepage": "https://vue-preloaders.netlify.com/",
   "dependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
