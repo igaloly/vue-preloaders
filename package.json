@@ -1,6 +1,6 @@
 {
   "name": "vue-preloaders",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library",
   "main": "dist/vue-plugin.js",
   "scripts": {
