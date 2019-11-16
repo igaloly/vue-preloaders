@@ -10,21 +10,12 @@ npm install vue-preloaders --save
 ```
 
 ## Mount
-vue-preloaders instance is binded to **this** and **app**.
+vue-preloaders instance is binded to **this**.
 ### Vue
 main.js
 ```javascript
 import VuePreloaders from 'vue-preloaders'
 Vue.use(VuePreloaders, /*{ default global options }*/)
-```
-### Nuxt
-nuxt.config.js
-```javascript
-{
-    modules: [
-        ['vue-preloaders/dist/nuxt-module', /*{ default global options }*/]
-    ]
-}
 ```
 
 ## Usage

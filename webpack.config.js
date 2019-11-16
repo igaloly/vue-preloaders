@@ -4,7 +4,6 @@ module.exports = {
     mode: 'production',
 
     entry: {
-        'nuxt-module': './src/lib/nuxt-module.js',
         'vue-plugin': './src/lib/vue-plugin.js',
     },
 
