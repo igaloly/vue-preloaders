@@ -1,12 +1,11 @@
-import helpers from '../helpers'
-
 const path = require('path');
+import helpers from './src/helpers'
 
-export default function (moduleOptions = {}) {
+module.exports = function (moduleOptions = {}) {
     const nuxtConfigOptions = this.options.preloaders || {};
     const options = helpers.deepMerge({}, moduleOptions, nuxtConfigOptions);
     this.addPlugin({
-        src: path.resolve(__dirname, 'nuxt-plugin.js'),
+        src: path.resolve(__dirname, 'src/lib/nuxt-plugin.js'),
         fileName: 'vue-preloaders.js',
         options
     })
