@@ -10,13 +10,23 @@ npm install vue-preloaders --save
 ```
 
 ## Mount
-vue-preloaders instance is binded to **this**.
+vue-preloaders instance is binded to **this** and **app**.
 ### Vue
 main.js
 ```javascript
 import VuePreloaders from 'vue-preloaders'
 Vue.use(VuePreloaders, /*{ default global options }*/)
 ```
+### Nuxt
+nuxt.config.js
+```javascript
+{
+    modules: [
+        ['vue-preloaders/nuxt', /*{ default global options }*/]
+    ]
+}
+```
+
 
 ## Usage
 Options are optional. They are deepMerged with global default options. 
@@ -38,28 +48,53 @@ this.$preloaders.close(/*{ options: { container } }*/)
 ```
 
 ## Options
-### cssClass
+### Init
+#### Loaders
+Map of default, pre-set loaders.
+```javascript
+{
+    loaders: {
+        myAwesomeLoader: {
+            cssStyle: { backgroundColor: 'pink' },
+            overlayStyle: { opacity: 1 },
+            component: MyAwesomeLoaderComponent
+        },
+        anotherAwesomeLoader: {
+            html: '<div class="my-loader">Loader injected html</div>',
+            text: 'This is my loader'
+        }
+    }
+}
+```
+#### Loader
+Default loader to be used.
+```javascript
+{
+    loader: 'myAwesomeLoader'
+}
+```
+#### cssClass
 Binds class of preloader root element.
 ```javascript
 {
     cssClass: 'test' //String
 }
 ```
-### cssStyle
+#### cssStyle
 Binds style of preloader root element.
 ```javascript
 {
     cssStyle: { dispaly: 'block' } //Object
 }
 ```
-### overlayStyle
+#### overlayStyle
 Binds style for preloader's overlay element.
 ```javascript
 {
     overlayStyle: { backgroundColor: 'pink', opacity: 0.5 } //Object
 }
 ```
-### component
+#### component
 Injects component as preloader content.
 ```javascript
 import MyAwesomeComp from '../components/MyAwesomeComp'
@@ -67,70 +102,72 @@ import MyAwesomeComp from '../components/MyAwesomeComp'
     component: MyAwesomeComp //Object
 }
 ```
-### componentStyle
+#### componentStyle
 Binds style for preloader's injected component element.
 ```javascript
 {
     overlayStyle: { textAlign: 'center' } //Object
 }
 ```
-### componentProps
+#### componentProps
 Binds props for preloader's injected component element.
 ```javascript
 {
     componentProps: { isCentered: true } //Object
 }
 ```
-### assetWrapperStyle
+#### assetWrapperStyle
 Binds style for preloader's asset wrapper element.
 ```javascript
 {
     assetWrapperStyle: { width: '50px' } //Object
 }
 ```
-### assetSrc
+#### assetSrc
 Injects src for preloader's image tag.
 ```javascript
 {
     assetSrc: 'https://www.random-image.com' //String
 }
 ```
-### assetStyle
+#### assetStyle
 Binds style for preloader's asset element.
 ```javascript
 {
     assetStyle: { width: '100%', maxWidth: '30px' } //Object
 }
 ```
-### text
+#### text
 Injects text as preloader's content.
 ```javascript
 {
     text: 'My text' //String
 }
 ```
-### textStyle
+#### textStyle
 Binds style for preloader's text element.
 ```javascript
 {
     textStyle: { textAlign: 'center' } //Object
 }
 ```
-### html
+#### html
 Injects HTML as preloader's content.
 ```javascript
 {
     html: '<div class="my-class">Test</div>' //String
 }
 ```
-### htmlStyle
+#### htmlStyle
 Binds style for preloader's injected HTML element.
 ```javascript
 {
     htmlStyle: { backgroundColor: 'orange' } //Object
 }
 ```
-
-**Content injections can be used together.**
    
+
+## Good to know
+
+
 ## Have fun! :)
