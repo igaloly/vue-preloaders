@@ -2,6 +2,12 @@
 Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library.
 
 ## Demo
+![vue-preloaders demo](https://i.giphy.com/media/SvRxu0XqXvTptu1j8w/giphy.webp)
+
+
+All preloaders were binded via vue-preloaders.  
+They all have source code to see which options were used.    
+
 https://vue-preloaders.netlify.com/
 
 ## Installation
@@ -10,34 +16,70 @@ npm install vue-preloaders --save
 ```
 
 ## Mount
-vue-preloaders instance is binded to **this**.
+vue-preloaders instance is binded to **this** and **app**.
 ### Vue
 main.js
 ```javascript
 import VuePreloaders from 'vue-preloaders'
-Vue.use(VuePreloaders, /*{ default global options }*/)
+Vue.use(VuePreloaders, /*{ options }*/)
+```
+### Nuxt
+nuxt.config.js
+```javascript
+{
+    modules: [
+        ['vue-preloaders/nuxt', /*{ options }*/]
+    ]
+}
 ```
 
+
 ## Usage
-Options are optional. They are deepMerged with global default options. 
+Options are optional. They are deepMerged with initialization options. 
 ### Open
-If no options at all were set, loader will open on Body element.  
+If no options at all were set, loader will open on body element.  
 Returns callback for closing the opened preloader.
 ```javascript
 this.$preloaders.open(/*{ options }*/)
 ```
 ```javascript
 const close = this.$preloaders.open(/*{ options }*/)
-setTimeout(close, 1500)
+setTimeout(close, 1000)
 ```
 
 ### Close
-Container is optional. If no container was set, preloader on Body tag will be closed (if exists).
+Container is optional.  
+If no container was set, preloader on body tag will be closed (if exists).
 ```javascript
 this.$preloaders.close(/*{ options: { container } }*/)
 ```
 
 ## Options
+### loaders
+Use it **only** in library init.  
+Map of default, pre-set preloaders.
+```javascript
+{
+    loaders: { //Object
+        myAwesomeLoader: {
+            cssStyle: { backgroundColor: 'pink' },
+            overlayStyle: { opacity: 1 },
+            component: MyAwesomeLoaderComponent
+        },
+        anotherAwesomeLoader: {
+            html: '<div class="my-loader">Loader injected html</div>',
+            text: 'This is my loader'
+        }
+    }
+}
+```
+### loader
+Uses loader from 'loaders' map.
+```javascript
+{
+    loader: 'myAwesomeLoader' //String
+}
+```
 ### cssClass
 Binds class of preloader root element.
 ```javascript
@@ -95,7 +137,7 @@ Injects src for preloader's image tag.
     assetSrc: 'https://www.random-image.com' //String
 }
 ```
-### assetStyle
+#### assetStyle
 Binds style for preloader's asset element.
 ```javascript
 {
@@ -130,7 +172,7 @@ Binds style for preloader's injected HTML element.
     htmlStyle: { backgroundColor: 'orange' } //Object
 }
 ```
-
-**Content injections can be used together.**
    
+
+
 ## Have fun! :)
