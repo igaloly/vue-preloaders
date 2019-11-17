@@ -2,6 +2,12 @@
 Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library.
 
 ## Demo
+![vue-preloaders demo](https://i.giphy.com/media/SvRxu0XqXvTptu1j8w/giphy.webp)
+
+
+All preloaders were binded via vue-preloaders.  
+They all have source code to see which options were used.    
+
 https://vue-preloaders.netlify.com/
 
 ## Installation
@@ -15,45 +21,46 @@ vue-preloaders instance is binded to **this** and **app**.
 main.js
 ```javascript
 import VuePreloaders from 'vue-preloaders'
-Vue.use(VuePreloaders, /*{ default global options }*/)
+Vue.use(VuePreloaders, /*{ options }*/)
 ```
 ### Nuxt
 nuxt.config.js
 ```javascript
 {
     modules: [
-        ['vue-preloaders/nuxt', /*{ default global options }*/]
+        ['vue-preloaders/nuxt', /*{ options }*/]
     ]
 }
 ```
 
 
 ## Usage
-Options are optional. They are deepMerged with global default options. 
+Options are optional. They are deepMerged with initialization options. 
 ### Open
-If no options at all were set, loader will open on Body element.  
+If no options at all were set, loader will open on body element.  
 Returns callback for closing the opened preloader.
 ```javascript
 this.$preloaders.open(/*{ options }*/)
 ```
 ```javascript
 const close = this.$preloaders.open(/*{ options }*/)
-setTimeout(close, 1500)
+setTimeout(close, 1000)
 ```
 
 ### Close
-Container is optional. If no container was set, preloader on Body tag will be closed (if exists).
+Container is optional.  
+If no container was set, preloader on body tag will be closed (if exists).
 ```javascript
 this.$preloaders.close(/*{ options: { container } }*/)
 ```
 
 ## Options
-### Init
-#### Loaders
-Map of default, pre-set loaders.
+### loaders
+Use it **only** in library init.  
+Map of default, pre-set preloaders.
 ```javascript
 {
-    loaders: {
+    loaders: { //Object
         myAwesomeLoader: {
             cssStyle: { backgroundColor: 'pink' },
             overlayStyle: { opacity: 1 },
@@ -66,35 +73,35 @@ Map of default, pre-set loaders.
     }
 }
 ```
-#### Loader
-Default loader to be used.
+### loader
+Uses loader from 'loaders' map.
 ```javascript
 {
-    loader: 'myAwesomeLoader'
+    loader: 'myAwesomeLoader' //String
 }
 ```
-#### cssClass
+### cssClass
 Binds class of preloader root element.
 ```javascript
 {
     cssClass: 'test' //String
 }
 ```
-#### cssStyle
+### cssStyle
 Binds style of preloader root element.
 ```javascript
 {
     cssStyle: { dispaly: 'block' } //Object
 }
 ```
-#### overlayStyle
+### overlayStyle
 Binds style for preloader's overlay element.
 ```javascript
 {
     overlayStyle: { backgroundColor: 'pink', opacity: 0.5 } //Object
 }
 ```
-#### component
+### component
 Injects component as preloader content.
 ```javascript
 import MyAwesomeComp from '../components/MyAwesomeComp'
@@ -102,28 +109,28 @@ import MyAwesomeComp from '../components/MyAwesomeComp'
     component: MyAwesomeComp //Object
 }
 ```
-#### componentStyle
+### componentStyle
 Binds style for preloader's injected component element.
 ```javascript
 {
     overlayStyle: { textAlign: 'center' } //Object
 }
 ```
-#### componentProps
+### componentProps
 Binds props for preloader's injected component element.
 ```javascript
 {
     componentProps: { isCentered: true } //Object
 }
 ```
-#### assetWrapperStyle
+### assetWrapperStyle
 Binds style for preloader's asset wrapper element.
 ```javascript
 {
     assetWrapperStyle: { width: '50px' } //Object
 }
 ```
-#### assetSrc
+### assetSrc
 Injects src for preloader's image tag.
 ```javascript
 {
@@ -137,28 +144,28 @@ Binds style for preloader's asset element.
     assetStyle: { width: '100%', maxWidth: '30px' } //Object
 }
 ```
-#### text
+### text
 Injects text as preloader's content.
 ```javascript
 {
     text: 'My text' //String
 }
 ```
-#### textStyle
+### textStyle
 Binds style for preloader's text element.
 ```javascript
 {
     textStyle: { textAlign: 'center' } //Object
 }
 ```
-#### html
+### html
 Injects HTML as preloader's content.
 ```javascript
 {
     html: '<div class="my-class">Test</div>' //String
 }
 ```
-#### htmlStyle
+### htmlStyle
 Binds style for preloader's injected HTML element.
 ```javascript
 {
@@ -166,8 +173,6 @@ Binds style for preloader's injected HTML element.
 }
 ```
    
-
-## Good to know
 
 
 ## Have fun! :)
