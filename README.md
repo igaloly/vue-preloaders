@@ -5,7 +5,7 @@ Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library.
 ![vue-preloaders demo](https://i.giphy.com/media/SvRxu0XqXvTptu1j8w/giphy.webp)
 
 
-All preloaders were binded via vue-preloaders.  
+All preloaders were bound via vue-preloaders.  
 They all have source code to see which options were used.    
 
 https://vue-preloaders.netlify.com/
@@ -16,7 +16,7 @@ npm install vue-preloaders --save
 ```
 
 ## Mount
-vue-preloaders instance is binded to **this** and **app**.
+vue-preloaders instance is bound to **this** and **app**.
 ### Vue
 main.js
 ```javascript
@@ -37,7 +37,7 @@ nuxt.config.js
 ## Usage
 Options are optional. They are deepMerged with initialization options. 
 ### Open
-If no options at all were set, loader will open on body element.  
+If no options at all were set, the loader will open on the body element.  
 Returns callback for closing the opened preloader.
 ```javascript
 this.$preloaders.open(/*{ options }*/)
@@ -49,7 +49,7 @@ setTimeout(close, 1000)
 
 ### Close
 Container is optional.  
-If no container was set, preloader on body tag will be closed (if exists).
+If no container was set, the preloader on the body tag will be closed (if exists).
 ```javascript
 this.$preloaders.close(/*{ options: { container } }*/)
 ```
@@ -62,13 +62,14 @@ Map of default, pre-set preloaders.
 {
     loaders: { //Object
         myAwesomeLoader: {
+            container: '#app',
             cssStyle: { backgroundColor: 'pink' },
             overlayStyle: { opacity: 1 },
             component: MyAwesomeLoaderComponent
         },
         anotherAwesomeLoader: {
             html: '<div class="my-loader">Loader injected html</div>',
-            text: 'This is my loader'
+            text: 'This is my loader',
         }
     }
 }
@@ -80,15 +81,22 @@ Uses loader from 'loaders' map.
     loader: 'myAwesomeLoader' //String
 }
 ```
+### container
+Element to be injected to.
+```javascript
+{
+    container: '.class-name' //String(selector) / Element
+}
+```
 ### cssClass
-Binds class of preloader root element.
+Binds class for preloader's root element.
 ```javascript
 {
     cssClass: 'test' //String
 }
 ```
 ### cssStyle
-Binds style of preloader root element.
+Binds style for preloader's root element.
 ```javascript
 {
     cssStyle: { dispaly: 'block' } //Object
