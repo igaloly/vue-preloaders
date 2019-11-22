@@ -22,13 +22,13 @@
   "homepage": "https://vue-preloaders.netlify.com/",
   "dependencies": {
     "lodash.merge": "^4.6.2",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
-    "vue-template-compiler": "^2.6.10",
-    "node-sass": "^4.13.0",
-    "sass-loader": "^8.0.0"
+    "vue-template-compiler": "^2.6.10"
   }
 }
