@@ -2,9 +2,9 @@
   "name": "vue-preloaders",
   "version": "1.0.6",
   "description": "Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library",
-  "main": "dist/vue-plugin.js",
+  "main": "dist/vue-preloaders.umd.js",
   "scripts": {
-    "build": "del .\\dist && webpack --config ./webpack.config.js"
+    "build": "vue-cli-service build --target lib --name vue-preloaders ./src/lib/vue-plugin.js"
   },
   "keywords": [
     "vue",
