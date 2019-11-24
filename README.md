@@ -1,14 +1,43 @@
-# Vue Preloaders 💡🍻📣
-Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library.
+# Vue Preloaders
+
+Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library.  
+Attach your preloader at any time, to any element easily and quickly.
+
+![vue-preloaders app use case](https://i.giphy.com/media/WV94760cIZli7S1Do0/giphy.webp)
 
 ## Demo
-![vue-preloaders demo](https://i.giphy.com/media/SvRxu0XqXvTptu1j8w/giphy.webp)
 
+### https://vue-preloaders.netlify.com/
 
-All preloaders were bound via vue-preloaders.  
-They all have source code to see which options were used.    
+![vue-preloaders form use case](https://i.giphy.com/media/ckHT6Q76D9yaeB2c0P/giphy.webp) 
 
-https://vue-preloaders.netlify.com/
+## Capabilities
+* Attach a stunning preloader to any element with one line of code.
+* Super simple usage with the ability to be super advanced and smart.
+* Can contain:
+    * Component
+    * Asset
+    * HTML
+    * Text
+    * **Any of them together**
+* Modify props of the injected component.
+* Modify any aspect of any element and their wrappers.
+* Have a list of preset preloaders for easy use.
+* Change options of already-opened preloader.
+* Separate preloaders custom styling via custom class name.
+* Smart deepMerge between all options:
+    * User default options.
+    * User default loader options (loader from loaders map).
+    * Open() loader options (loader from loaders map).
+    * Open() options.
+* Stable in asyncData:
+    * on SSR, asyncData doesn't break.
+    * on client, asyncData works regularly.
+* Close easily with returned callback.
+
+And more!
+
+![vue-preloaders showcase](https://i.giphy.com/media/LoBapQdtOncsUQzvgd/giphy.webp)
 
 ## Installation
 ```javascript
@@ -27,18 +56,21 @@ Vue.use(VuePreloaders, /*{ options }*/)
 nuxt.config.js
 ```javascript
 {
+    ...
     modules: [
         ['vue-preloaders/nuxt', /*{ options }*/]
     ]
+    ...
 }
 ```
 
 
 ## Usage
-Options are optional. They are deepMerged with initialization options. 
 ### Open
-If no options at all were set, the loader will open on the body element.  
-Returns callback for closing the opened preloader.
+**Gets**: Object with options from the options list below.  
+**Returns**: callback for closing the opened preloader.  
+
+If no container was set, it will fallback to the body element.
 ```javascript
 this.$preloaders.open(/*{ options }*/)
 ```
@@ -48,18 +80,20 @@ setTimeout(close, 1000)
 ```
 
 ### Close
-Container is optional.  
-If no container was set, the preloader on the body tag will be closed (if exists).
+**Gets**: Object with container key.
+
+If no container was set, the preloader on the body tag will be closed (if it exists).
 ```javascript
 this.$preloaders.close(/*{ options: { container } }*/)
 ```
 
 ## Options
 ### loaders
-Use it **only** in library init.  
-Map of default, pre-set preloaders.
+Use it **only** in the library init.  
+Map of default, preset preloaders.
 ```javascript
 {
+    ...
     loaders: { //Object
         myAwesomeLoader: {
             container: '#app',
@@ -72,115 +106,144 @@ Map of default, pre-set preloaders.
             text: 'This is my loader',
         }
     }
+    ...
 }
 ```
 ### loader
-Uses loader from 'loaders' map.
+Loader to use from 'loaders' map.
 ```javascript
 {
+    ...
     loader: 'myAwesomeLoader' //String
+    ...
 }
 ```
 ### container
 Element to be injected to.
 ```javascript
 {
+    ...
     container: '.class-name' //String(selector) / Element
+    ...
 }
 ```
 ### cssClass
 Binds class for preloader's root element.
 ```javascript
 {
+    ...
     cssClass: 'test' //String
+    ...
 }
 ```
 ### cssStyle
 Binds style for preloader's root element.
 ```javascript
 {
+    ...
     cssStyle: { dispaly: 'block' } //Object
+    ...
 }
 ```
 ### overlayStyle
 Binds style for preloader's overlay element.
 ```javascript
 {
+    ...
     overlayStyle: { backgroundColor: 'pink', opacity: 0.5 } //Object
+    ...
 }
 ```
 ### component
-Injects component as preloader content.
+Inject component to preloader.
 ```javascript
 import MyAwesomeComp from '../components/MyAwesomeComp'
 {
+    ...
     component: MyAwesomeComp //Object
+    ...
 }
 ```
 ### componentStyle
-Binds style for preloader's injected component element.
+Binds style for preloader's injected component.
 ```javascript
 {
+    ...
     overlayStyle: { textAlign: 'center' } //Object
+    ...
 }
 ```
 ### componentProps
-Binds props for preloader's injected component element.
+Binds props for preloader's injected component.
 ```javascript
 {
+    ...
     componentProps: { isCentered: true } //Object
+    ...
 }
 ```
 ### assetWrapperStyle
 Binds style for preloader's asset wrapper element.
 ```javascript
 {
+    ...
     assetWrapperStyle: { width: '50px' } //Object
+    ...
 }
 ```
 ### assetSrc
-Injects src for preloader's image tag.
+Inject src for preloader's image tag.
 ```javascript
 {
+    ...
     assetSrc: 'https://www.random-image.com' //String
+    ...
 }
 ```
 #### assetStyle
 Binds style for preloader's asset element.
 ```javascript
 {
+    ...
     assetStyle: { width: '100%', maxWidth: '30px' } //Object
+    ...
 }
 ```
 ### text
-Injects text as preloader's content.
+Inject text to preloader.
 ```javascript
 {
+    ...
     text: 'My text' //String
+    ...
 }
 ```
 ### textStyle
 Binds style for preloader's text element.
 ```javascript
 {
+    ...
     textStyle: { textAlign: 'center' } //Object
+    ...
 }
 ```
 ### html
-Injects HTML as preloader's content.
+Inject HTML to preloader.
 ```javascript
 {
+    ...
     html: '<div class="my-class">Test</div>' //String
+    ...
 }
 ```
 ### htmlStyle
 Binds style for preloader's injected HTML element.
 ```javascript
 {
+    ...
     htmlStyle: { backgroundColor: 'orange' } //Object
+    ...
 }
 ```
    
-
-
 ## Have fun! :)
