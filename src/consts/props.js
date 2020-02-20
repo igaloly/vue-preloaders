@@ -18,7 +18,7 @@ export default {
     },
 
     component: {
-        type: [Object, Boolean],
+        type: [Object, Boolean, Function],
         default: false
     },
     componentStyle: {
