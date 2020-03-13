@@ -1,5 +1,5 @@
 <template>
-    <transition name="fade">
+    <transition :name="consts.loaderClassName" @afterLeave="isTransitionDone = true">
         <span :class="[ consts.loaderClassName, cssClass ]" :style="cssStyle" v-if="isOpen">
             <span :class="`${consts.loaderClassName}-overlay`" :style="overlayStyle"></span>
             <component v-if="component" :is="component" v-bind="componentProps"
@@ -24,7 +24,13 @@
         data() {
             return {
                 consts,
-                isOpen: false
+                isOpen: false,
+                isTransitionDone: false
+            }
+        },
+        watch: {
+            isOpen(isOpen) {
+                if(isOpen) this.isTransitionDone = false
             }
         }
     }
@@ -58,11 +64,11 @@
     }
 
     // Transitions
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity $transition-duration*1ms;
+    .#{$loader-name}-enter-active, .#{$loader-name}-leave-active {
+        transition: opacity 150ms;
     }
 
-    .fade-enter, .fade-leave-to {
+    .#{$loader-name}-enter, .#{$loader-name}-leave-to {
         opacity: 0;
     }
 </style>

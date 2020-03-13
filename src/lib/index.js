@@ -84,6 +84,9 @@ function preloaders(userDefaultOptions = {}) {
                     },
                     close() {
                         loaderInstance.isOpen = false
+                        return new Promise(resolve => {
+                            if(loaderInstance.isTransitionDone) resolve()
+                        })
                     },
                     isPositionChanged,
                     props: loaderInstance.$props
@@ -103,7 +106,7 @@ function preloaders(userDefaultOptions = {}) {
                 this.close({ container })
             }
         },
-        close({ container: userContainer } = {}) {
+        async close({ container: userContainer } = {}) {
             // get container
             const container = helpers.getContainer(userContainer || defaultOptions.container);
             // get controller
@@ -111,19 +114,16 @@ function preloaders(userDefaultOptions = {}) {
             // handle close of never-opened container
             if(!containerController) helpers.exeption.error('You must open a preloader before closing it.');
 
-            // reset position after transition out
-            setTimeout(() => {
-                // if position changed and is relative now
-                if (containerController.isPositionChanged && container.style.position === 'relative') {
-                    // reset position
-                    container.style.position = ''
-                    // reset flag
-                    containerController.isPositionChanged = false
-                }
-            }, consts.transitionDuration)
-
             // close
-            containerController.close()
+            await containerController.close()
+
+            // reset position after transition out
+            if (containerController.isPositionChanged && container.style.position === 'relative') {
+                // reset position
+                container.style.position = ''
+                // reset flag
+                containerController.isPositionChanged = false
+            }
         }
     };
 }

@@ -1,13 +1,11 @@
 import sassConsts from './index.scss'
-let { loaderClassName, transitionDuration } = sassConsts;
-transitionDuration = parseInt(transitionDuration)
+let { loaderClassName } = sassConsts;
 
 const consts = {
     loaderName: 'Preloaders',
     loaderInjectName: loaderClassName,
     loaderVariableName: '$' + loaderClassName,
     loaderClassName,
-    transitionDuration
 }
 
 export default consts

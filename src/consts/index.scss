@@ -1,7 +1,5 @@
 $loader-name: preloaders;
-$transition-duration: 150;
 
 :export {
     loaderClassName: $loader-name;
-    transitionDuration: $transition-duration;
 }

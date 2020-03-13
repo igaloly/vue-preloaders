@@ -24,16 +24,17 @@ Attach your preloader at any time, to any element easily and quickly.
 * Modify any aspect of any element and their wrappers.
 * Have a list of preset preloaders for easy use.
 * Change options of already-opened preloader.
-* Separate preloaders custom styling via custom class name.
 * Smart deepMerge between all options:
     * User default options.
     * User default loader options (loader from loaders map).
     * Open() loader options (loader from loaders map).
     * Open() options.
-* Stable in asyncData:
+* Separate preloaders custom styling via custom class name.
+* Customize transition.
+* Close easily with returned callback.
+* Stable in Nuxt's asyncData:
     * on SSR, asyncData doesn't break.
     * on client, asyncData works regularly.
-* Close easily with returned callback.
 
 And more!
 
@@ -63,7 +64,6 @@ nuxt.config.js
     ...
 }
 ```
-
 
 ## Usage
 ### Open
@@ -160,7 +160,7 @@ Inject component to preloader.
 import MyAwesomeComp from '../components/MyAwesomeComp'
 {
     ...
-    component: MyAwesomeComp //Object
+    component: MyAwesomeComp
     ...
 }
 ```
@@ -246,4 +246,26 @@ Binds style for preloader's injected HTML element.
 }
 ```
    
+   
+   
+
+## Transition
+Customize the transition of the preloader.  
+More info: https://vuejs.org/v2/guide/transitions.html
+
+Transition name is: ```preloaders```
+```css
+/* Default Transition */ 
+
+.preloaders-enter-active, .preloaders-leave-active {
+    transition: opacity 150ms;
+}
+.preloaders-enter, .preloaders-leave-to {
+    opacity: 0;
+}
+```
+Please make sure when you edit the transition classes, that the specificity is higher.  
+More info: https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
+  
+
 ## Have fun! :)
