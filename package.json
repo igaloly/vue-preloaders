@@ -20,6 +20,9 @@
     "url": "https://github.com/igaloly/vue-preloaders"
   },
   "homepage": "https://vue-preloaders.netlify.com/",
+  "files": [
+    "dist", "nuxt.js", "src"
+  ],
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
