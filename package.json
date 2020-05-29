@@ -21,7 +21,9 @@
   },
   "homepage": "https://vue-preloaders.netlify.com/",
   "files": [
-    "dist", "nuxt.js", "src"
+    "dist/vue-preloaders.umd.min.js",
+    "nuxt.js",
+    "src"
   ],
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",
