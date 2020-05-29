@@ -29,7 +29,7 @@
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
     "vue": "^2.6.11",
-    "vue-template-compiler": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
     "lodash.merge": "^4.6.2",
