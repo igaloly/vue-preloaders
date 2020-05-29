@@ -112,7 +112,7 @@ function preloaders(userDefaultOptions = {}) {
             // get controller
             const containerController = container[consts.loaderVariableName];
             // handle close of never-opened container
-            if(!containerController) helpers.exeption.error('You must open a preloader before closing it.');
+            if(!containerController) return;
 
             // close
             await containerController.close()
