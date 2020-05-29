@@ -38,6 +38,7 @@ function preloaders(userDefaultOptions = {}) {
 
             // get container
             let container = helpers.getContainer(options.container)
+            if(!container) return helpers.exeption.warn('Container not found');
             // get controller (the object that's injected to the dom element to manipulate its loader)
             let containerController = container.$preloaders || {};
 
@@ -105,24 +106,25 @@ function preloaders(userDefaultOptions = {}) {
                 this.close({ container })
             }
         },
-        async close({ container: userContainer } = {}) {
+        close({ container: userContainer } = {}) {
             // get container
             const container = helpers.getContainer(userContainer || defaultOptions.container);
+            if(!container) return helpers.exeption.warn('Container not found');
             // get controller
             const containerController = container.$preloaders;
             // handle close of never-opened container
-            if(!containerController) return;
+            if(!containerController) return helpers.exeption.warn('Preloader has not been initiated [.open()]');
 
             // close
-            await containerController.close()
-
-            // reset position after transition out
-            if (containerController.isPositionChanged && container.style.position === 'relative') {
-                // reset position
-                container.style.position = ''
-                // reset flag
-                containerController.isPositionChanged = false
-            }
+            containerController.close().then(() => {
+                // reset position after transition out
+                if (containerController.isPositionChanged && container.style.position === 'relative') {
+                    // reset position
+                    container.style.position = ''
+                    // reset flag
+                    containerController.isPositionChanged = false
+                }
+            })
         }
     };
 }

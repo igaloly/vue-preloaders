@@ -22,7 +22,7 @@ export default {
     },
     getContainer(container){
         // if container is NOT DOM element
-        if (Element && !(container instanceof Element)) {
+        if (typeof Element !== 'undefined' && !(container instanceof Element)) {
 
             // if no document
             if(typeof document === 'undefined'){
