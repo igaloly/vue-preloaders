@@ -40,7 +40,7 @@ function preloaders(userDefaultOptions = {}) {
             // get container
             let container = helpers.getContainer(options.container)
             // get controller (the object that's injected to the dom element to manipulate its loader)
-            let containerController = container[consts.loaderVariableName] || {};
+            let containerController = container.$preloaders || {};
 
             // get container's css position
             const { position: containerCssPosition } = window.getComputedStyle(container)
@@ -55,7 +55,7 @@ function preloaders(userDefaultOptions = {}) {
             }
 
             // if loader already initialized - if controller in container
-            if (consts.loaderVariableName in container) {
+            if ('$preloaders' in container) {
                 // pass props if exists
                 if (options.props) {
                     Object.entries(options.props).forEach(entry => {
@@ -92,7 +92,7 @@ function preloaders(userDefaultOptions = {}) {
                     props: loaderInstance.$props
                 };
                 // set controller to container
-                container[consts.loaderVariableName] = containerController
+                container.$preloaders = containerController
 
                 // append loader
                 container.appendChild(loaderInstance.$el)
@@ -110,7 +110,7 @@ function preloaders(userDefaultOptions = {}) {
             // get container
             const container = helpers.getContainer(userContainer || defaultOptions.container);
             // get controller
-            const containerController = container[consts.loaderVariableName];
+            const containerController = container.$preloaders;
             // handle close of never-opened container
             if(!containerController) return;
 

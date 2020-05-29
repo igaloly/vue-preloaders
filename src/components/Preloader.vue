@@ -1,15 +1,15 @@
 <template>
-    <transition :name="consts.loaderClassName" @afterLeave="isTransitionDone = true">
-        <span :class="[ consts.loaderClassName, cssClass ]" :style="cssStyle" v-if="isOpen">
-            <span :class="`${consts.loaderClassName}-overlay`" :style="overlayStyle"></span>
+    <transition name="preloaders" @afterLeave="isTransitionDone = true">
+        <span :class="[ 'preloaders', cssClass ]" :style="cssStyle" v-if="isOpen">
+            <span class="preloaders-overlay" :style="overlayStyle"></span>
             <component v-if="component" :is="component" v-bind="componentProps"
-                       :class="`${consts.loaderClassName}-component`" :style="componentStyle"/>
-            <span v-if="assetSrc" :class="`${consts.loaderClassName}-asset-wrapper`" :style="assetWrapperStyle">
-                <img :class="`${consts.loaderClassName}-asset`" :src="assetSrc" :style="assetStyle"
+                       class="preloaders-component" :style="componentStyle"/>
+            <span v-if="assetSrc" class="preloaders-asset-wrapper" :style="assetWrapperStyle">
+                <img class="preloaders-asset" :src="assetSrc" :style="assetStyle"
                      alt="Loader" title="Loader">
             </span>
-            <span v-if="text" :class="`${consts.loaderClassName}-text`" :style="textStyle">{{text}}</span>
-            <span v-if="html" :class="`${consts.loaderClassName}-html`" :style="htmlStyle" v-html="html"></span>
+            <span v-if="text" class="preloaders-text" :style="textStyle">{{text}}</span>
+            <span v-if="html" class="preloaders-html" :style="htmlStyle" v-html="html"></span>
         </span>
     </transition>
 </template>
@@ -19,7 +19,7 @@
     import props from '../consts/props'
 
     export default {
-        name: consts.loaderName,
+        name: 'Preloaders',
         props,
         data() {
             return {
@@ -39,7 +39,7 @@
 <style lang="scss" scoped>
     @import "../consts";
 
-    .#{$loader-name} {
+    .preloaders {
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -49,13 +49,13 @@
         z-index: 2;
     }
 
-    .#{$loader-name}-overlay {
+    .preloaders-overlay {
         z-index: -1;
         background-color: black;
         opacity: 0.75;
     }
 
-    .#{$loader-name}, .#{$loader-name}-overlay {
+    .preloaders, .preloaders-overlay {
         position: absolute;
         top: 0;
         left: 0;
@@ -64,11 +64,11 @@
     }
 
     // Transitions
-    .#{$loader-name}-enter-active, .#{$loader-name}-leave-active {
+    .preloaders-enter-active, .preloaders-leave-active {
         transition: opacity 150ms;
     }
 
-    .#{$loader-name}-enter, .#{$loader-name}-leave-to {
+    .preloaders-enter, .preloaders-leave-to {
         opacity: 0;
     }
 </style>
