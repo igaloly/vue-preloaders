@@ -1,5 +1,4 @@
 import helpers from '../helpers'
-import consts from '../consts'
 import loaderComponent from '../components/Preloader.vue'
 import Vue from 'vue';
 
@@ -12,7 +11,7 @@ function preloaders(userDefaultOptions = {}) {
 
     // error if default loader declared but not found
     if (userDefaultOptions.loader && !defaultLoaderOptions) {
-        return helpers.exeption.error('Default loader not found in loaders')
+        return helpers.exeption.wran('Default loader not found in loaders')
     }
 
     // parse user default options with default loader options
@@ -39,8 +38,9 @@ function preloaders(userDefaultOptions = {}) {
 
             // get container
             let container = helpers.getContainer(options.container)
+            if(!container) return helpers.exeption.warn('Container not found');
             // get controller (the object that's injected to the dom element to manipulate its loader)
-            let containerController = container[consts.loaderVariableName] || {};
+            let containerController = container.$preloaders || {};
 
             // get container's css position
             const { position: containerCssPosition } = window.getComputedStyle(container)
@@ -55,7 +55,7 @@ function preloaders(userDefaultOptions = {}) {
             }
 
             // if loader already initialized - if controller in container
-            if (consts.loaderVariableName in container) {
+            if ('$preloaders' in container) {
                 // pass props if exists
                 if (options.props) {
                     Object.entries(options.props).forEach(entry => {
@@ -92,7 +92,7 @@ function preloaders(userDefaultOptions = {}) {
                     props: loaderInstance.$props
                 };
                 // set controller to container
-                container[consts.loaderVariableName] = containerController
+                container.$preloaders = containerController
 
                 // append loader
                 container.appendChild(loaderInstance.$el)
@@ -106,24 +106,25 @@ function preloaders(userDefaultOptions = {}) {
                 this.close({ container })
             }
         },
-        async close({ container: userContainer } = {}) {
+        close({ container: userContainer } = {}) {
             // get container
             const container = helpers.getContainer(userContainer || defaultOptions.container);
+            if(!container) return helpers.exeption.warn('Container not found');
             // get controller
-            const containerController = container[consts.loaderVariableName];
+            const containerController = container.$preloaders;
             // handle close of never-opened container
-            if(!containerController) helpers.exeption.error('You must open a preloader before closing it.');
+            if(!containerController) return helpers.exeption.warn('Preloader has not been initiated (.open())');
 
             // close
-            await containerController.close()
-
-            // reset position after transition out
-            if (containerController.isPositionChanged && container.style.position === 'relative') {
-                // reset position
-                container.style.position = ''
-                // reset flag
-                containerController.isPositionChanged = false
-            }
+            containerController.close().then(() => {
+                // reset position after transition out
+                if (containerController.isPositionChanged && container.style.position === 'relative') {
+                    // reset position
+                    container.style.position = ''
+                    // reset flag
+                    containerController.isPositionChanged = false
+                }
+            })
         }
     };
 }

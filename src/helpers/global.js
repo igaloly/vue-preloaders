@@ -5,8 +5,7 @@ const exeption = {
         throw new TypeError(error)
     },
     warn(error) {
-        console.warn(error);
-        console.trace();
+        console.warn(`[vue-preloaders] - ${error}`);
     }
 };
 

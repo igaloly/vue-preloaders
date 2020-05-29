@@ -1,6 +1,6 @@
 {
   "name": "vue-preloaders",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library",
   "main": "dist/vue-preloaders.umd.min.js",
   "scripts": {
@@ -20,14 +20,21 @@
     "url": "https://github.com/igaloly/vue-preloaders"
   },
   "homepage": "https://vue-preloaders.netlify.com/",
+  "files": [
+    "dist/vue-preloaders.umd.min.js",
+    "nuxt.js",
+    "src"
+  ],
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
-    "lodash.merge": "^4.6.2",
-    "node-sass": "^4.13.1",
-    "sass-loader": "^8.0.2",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "lodash.merge": "^4.6.2",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2"
   },
   "peerDependencies": {
     "vue": "^2.0.0"

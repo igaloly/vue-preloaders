@@ -22,11 +22,11 @@ export default {
     },
     getContainer(container){
         // if container is NOT DOM element
-        if (!(container instanceof Element)) {
+        if (typeof Element !== 'undefined' && !(container instanceof Element)) {
 
             // if no document
             if(typeof document === 'undefined'){
-                return helpers.exeption.error('Document is not defined')
+                return helpers.exeption.warn('Document is not defined')
             }
 
             // if no container
@@ -41,9 +41,10 @@ export default {
                 if (!container) {
                     // take body as container
                     container = document.querySelector('body');
+                    helpers.exeption.warn('Container not found. Fallback to document.body')
                 }
             } else {
-                return helpers.exeption.error('Container must be dom element OR query selector string')
+                return helpers.exeption.warn('Container must be dom element OR query selector string')
             }
         }
 
