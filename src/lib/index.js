@@ -108,6 +108,8 @@ function preloaders(userDefaultOptions = {}) {
         async close({ container: userContainer } = {}) {
             // get container
             const container = helpers.getContainer(userContainer || defaultOptions.container);
+            // handle no-container
+            if(!container) return;
             // get controller
             const containerController = container.$preloaders;
             // handle close of never-opened container
