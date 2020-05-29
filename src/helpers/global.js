@@ -6,7 +6,6 @@ const exeption = {
     },
     warn(error) {
         console.warn(error);
-        console.trace();
     }
 };
 
