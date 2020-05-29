@@ -11,7 +11,7 @@ function preloaders(userDefaultOptions = {}) {
 
     // error if default loader declared but not found
     if (userDefaultOptions.loader && !defaultLoaderOptions) {
-        return helpers.exeption.error('Default loader not found in loaders')
+        return helpers.exeption.wran('Default loader not found in loaders')
     }
 
     // parse user default options with default loader options
