@@ -1,5 +1,4 @@
 import helpers from '../helpers'
-import consts from '../consts'
 import loaderComponent from '../components/Preloader.vue'
 import Vue from 'vue';
 

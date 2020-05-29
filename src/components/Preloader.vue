@@ -15,7 +15,6 @@
 </template>
 
 <script>
-    import consts from '../consts'
     import props from '../consts/props'
 
     export default {
@@ -23,7 +22,6 @@
         props,
         data() {
             return {
-                consts,
                 isOpen: false,
                 isTransitionDone: false
             }
@@ -37,8 +35,6 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "../consts";
-
     .preloaders {
         overflow: hidden;
         display: flex;
