@@ -113,7 +113,7 @@ function preloaders(userDefaultOptions = {}) {
             // get controller
             const containerController = container.$preloaders;
             // handle close of never-opened container
-            if(!containerController) return helpers.exeption.warn('Preloader has not been initiated [.open()]');
+            if(!containerController) return helpers.exeption.warn('Preloader has not been initiated (.open())');
 
             // close
             containerController.close().then(() => {

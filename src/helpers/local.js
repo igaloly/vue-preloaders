@@ -41,6 +41,7 @@ export default {
                 if (!container) {
                     // take body as container
                     container = document.querySelector('body');
+                    helpers.exeption.warn('Container not found. Fallback to document.body')
                 }
             } else {
                 return helpers.exeption.warn('Container must be dom element OR query selector string')
