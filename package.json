@@ -1,14 +1,13 @@
 {
   "name": "vue-preloaders",
   "version": "1.0.13",
-  "description": "Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library",
+  "description": "Stable, Flexible and Fully Customizable Vue preloaders library",
   "main": "dist/vue-preloaders.umd.min.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --name vue-preloaders ./src/lib/vue-plugin.js --mode production"
   },
   "keywords": [
     "vue",
-    "nuxt",
     "loader",
     "preloader",
     "spinner"
@@ -22,7 +21,7 @@
   "homepage": "https://vue-preloaders.netlify.com/",
   "files": [
     "dist/vue-preloaders.umd.min.js",
-    "nuxt.js",
+    "dist/vue-preloaders.css",
     "src"
   ],
   "devDependencies": {
