@@ -1,6 +1,6 @@
 # Vue Preloaders
 
-Stable, Flexible and Fully Customizable Vue and Nuxt preloaders library.  
+Stable, Flexible and Fully Customizable Vue preloaders library.  
 Attach your preloader at any time, to any element easily and quickly.
 
 ![vue-preloaders app use case](https://i.giphy.com/media/WV94760cIZli7S1Do0/giphy.webp)
@@ -32,9 +32,6 @@ Attach your preloader at any time, to any element easily and quickly.
 * Separate preloaders custom styling via custom class name.
 * Customize transition.
 * Close easily with returned callback.
-* Stable in Nuxt's asyncData:
-    * on SSR, asyncData doesn't break.
-    * on client, asyncData works regularly.
 
 And more!
 
@@ -50,19 +47,10 @@ vue-preloaders instance is bound to **this** and **app**.
 ### Vue
 main.js
 ```javascript
+import 'vue-preloaders/dist/vue-preloaders.css'
 import VuePreloaders from 'vue-preloaders'
+
 Vue.use(VuePreloaders, /*{ options }*/)
-```
-### Nuxt
-nuxt.config.js
-```javascript
-{
-    ...
-    modules: [
-        ['vue-preloaders/nuxt', /*{ options }*/]
-    ]
-    ...
-}
 ```
 
 ## Usage
