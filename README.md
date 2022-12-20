@@ -1,4 +1,6 @@
 # Important!
+**This repo is not under maintenance anymore. You may fork it and continue this journey.**
+
 in 2.0, nuxt module has been removed. The reason is that **you don't really need it**. Just use it as a vue plugin.
 
 # Vue Preloaders
